@@ -9,7 +9,7 @@ function UserCard({ name, id }) {
 
     return (
         <div className="UserCard">
-            <li>{name}</li>
+            <h3>{name}</h3>
             <Link to={`/users/${id}`}><button>More Details</button></Link>
         </div>
     );
