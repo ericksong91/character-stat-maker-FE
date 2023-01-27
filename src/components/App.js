@@ -1,6 +1,8 @@
 import { React, useEffect, useState } from 'react';
 import UserCard from './UserCard';
 import UserProfile from './UserProfile';
+import Container from '@mui/material/Container';
+import Grid2 from '@mui/material/Unstable_Grid2';
 import '../css/App.css';
 
 function App() {
@@ -30,8 +32,12 @@ function App() {
 
   return (
     <div className="App">
-        <h1>Hello, here is a list of Users:</h1>
-        {userList}
+      <h1>Hello, here is a list of Users:</h1>
+      <Container sx={{ py: 1 }} maxWidth="xs">
+        <Grid2 container spacing={10}>
+          {userList}
+        </Grid2>
+      </Container>
     </div>
   );
 }
