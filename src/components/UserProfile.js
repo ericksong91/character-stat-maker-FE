@@ -1,8 +1,11 @@
 import { React, useEffect, useState } from 'react';
+import CharCard from './CharCard';
+// import Container from '@mui/material/Container';
+// import Grid2 from '@mui/material/Unstable_Grid2';
 import { Link, useParams } from "react-router-dom"
 import '../css/App.css';
 
-function UserProfile() {
+function UserProfile({ users }) {
     const index = parseInt(useParams().id);
     const [characters, setCharacters] = useState([]);
 
@@ -13,16 +16,15 @@ function UserProfile() {
             .catch(() => alert("Error!"))
     }, [])
 
-
-    const charList = characters.map((char)=>{
-      return (
-      <li key={char.id}>{char.name} with {char.job} class</li>
-      )
+    const charList = characters.map((char) => {
+        return (
+            <CharCard key={char.id} char={char} />
+        )
     })
 
     return (
         <div className="UserCard">
-            <h1>You've landed on the page for {index}</h1>
+            <h1>You've landed on the page for {users[index].username}</h1>
             {charList}
         </div>
     );

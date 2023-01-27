@@ -1,5 +1,4 @@
 import { React } from 'react';
-import UserProfile from './UserProfile';
 import '../css/App.css';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
