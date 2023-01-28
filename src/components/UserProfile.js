@@ -31,7 +31,7 @@ function UserProfile({ users }) {
     return (
         <div className="UserCard">
             <h1>You've landed on the page for {users[index - 1].username}</h1>
-            <NewChar />
+            <NewChar id={users[index-1].id} />
             {charList}
         </div>
     );
