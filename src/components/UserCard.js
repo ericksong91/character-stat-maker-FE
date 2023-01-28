@@ -12,7 +12,7 @@ function UserCard({ name, id }) {
         <div className="UserCard">
             <Card variant="outlined">
                 <h3>{name}</h3>
-                <Link to={`/users/${id}`}><Button variant="contained">More Details</Button></Link>
+                <Link to={`/users/${id}`}><Button variant="contained">Character List</Button></Link>
             </Card>
         </div>
     );

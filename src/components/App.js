@@ -17,13 +17,11 @@ function App() {
       .catch(() => alert("Error!"))
   }, [])
 
-
-
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<UserList users={users} />} />
-        <Route path='/users/:id' element={<UserProfile users={users}/>} />
+        <Route path='/users/:id' element={<UserProfile users={users} />} />
       </Routes>
     </div>
   );
