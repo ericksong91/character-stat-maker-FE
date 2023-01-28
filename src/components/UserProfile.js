@@ -1,17 +1,12 @@
 import { React, useEffect, useState } from 'react';
 import CharCard from './CharCard';
-// import Container from '@mui/material/Container';
-// import Grid2 from '@mui/material/Unstable_Grid2';
 import NewChar from './NewChar';
+import Button from '@mui/material/Button';
+import { Grid } from '@mui/material';
 import { Link, useParams } from "react-router-dom"
 import '../css/App.css';
 
-//App 
-//User List -> User Card
-//User Profile -> Char Card / New Character?
-// 
-
-function UserProfile({ users }) {
+function UserProfile({ users, onSubmit }) {
     const index = parseInt(useParams().id);
     const [characters, setCharacters] = useState([]);
 
@@ -20,19 +15,24 @@ function UserProfile({ users }) {
             .then((r) => r.json())
             .then((data) => setCharacters(data))
             .catch(() => alert("Error!"))
-    }, [])
+    }, [index])
 
     const charList = characters.map((char) => {
         return (
-            <CharCard key={char.id} char={char} owner={users[index - 1].username} />
+            <Grid item xs={3} key={char.id}>
+                <CharCard key={char.id} char={char} owner={users[index - 1].username} />
+            </Grid>
         )
     })
 
     return (
         <div className="UserCard">
             <h1>You've landed on the page for {users[index - 1].username}</h1>
-            <NewChar id={users[index-1].id} />
-            {charList}
+            <NewChar id={users[index - 1].id} onSubmit={onSubmit} />
+            <Link to={`/`}><Button variant="contained">Return to Userlist</Button></Link>
+            <Grid container spacing={2} columns={12}>
+                {charList}
+            </Grid>
         </div>
     );
 }

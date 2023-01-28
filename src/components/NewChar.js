@@ -2,9 +2,7 @@ import { React } from 'react';
 import Button from '@mui/material/Button';
 import '../css/App.css';
 
-function NewChar({ id }) {
-
-
+function NewChar({ id, onSubmit }) {
     function handleSubmit() {
         console.log("you submitted!")
         console.log(id)
@@ -21,13 +19,15 @@ function NewChar({ id }) {
             .then((r) => r.json())
             .then((data) => {
                 console.log(data)
+                onSubmit(data)
             })
+            .catch(() => alert("Error making character!"))
     }
 
 
     return (
         <div className="newChar">
-            <Button variant="contained" onClick={handleSubmit}>🏃‍♂️🏃‍♀️</Button>
+            <Button variant="contained" onClick={handleSubmit}>🏃‍♂️Create New Unit🏃‍♀️</Button>
         </div>
     )
 

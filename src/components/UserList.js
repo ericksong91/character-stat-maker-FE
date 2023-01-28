@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React } from 'react';
 import UserCard from './UserCard';
 import { Grid } from '@mui/material';
 import '../css/App.css';
@@ -6,7 +6,7 @@ import '../css/App.css';
 function UserList({ users }) {
     const userList = users.map((name) => {
         return (
-            <Grid item xs={3}>
+            <Grid item xs={3} key={name.id}>
                 <UserCard key={name.id} name={name.username} id={name.id} />
             </Grid>
         )

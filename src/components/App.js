@@ -17,11 +17,16 @@ function App() {
       .catch(() => alert("Error!"))
   }, [])
 
+  function handleNewCharacter(data) {
+    console.log("Checking new Character....")
+    console.log(data)
+  }
+
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<UserList users={users} />} />
-        <Route path='/users/:id' element={<UserProfile users={users} />} />
+        <Route path='/users/:id' element={<UserProfile users={users} onSubmit={handleNewCharacter} />} />
       </Routes>
     </div>
   );
