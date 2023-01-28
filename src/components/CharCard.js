@@ -2,7 +2,7 @@ import { React } from 'react';
 import '../css/App.css';
 import Card from '@mui/material/Card';
 
-function CharCard({ char }) {
+function CharCard({ char, owner }) {
 
     const {
         id,
@@ -20,8 +20,6 @@ function CharCard({ char }) {
         luk
     } = char
 
-    console.log("You're here!")
-
     return (
         <div className="UserCard">
             <Card variant="outlined">
@@ -35,6 +33,8 @@ function CharCard({ char }) {
                 DEF: {def}
                 RES: {res}
                 LUK: {luk}
+
+                <h4>Owned by {owner}</h4>
             </Card>
         </div>
     );

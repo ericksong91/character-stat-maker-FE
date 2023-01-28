@@ -4,9 +4,17 @@ import '../css/App.css';
 
 function NewChar() {
 
+
+    function handleSubmit(){
+
+        console.log("you submitted!")
+
+    }
+
+
     return (
         <div class="newChar">
-            <Button variant="contained">🏃‍♂️🏃‍♀️</Button>
+            <Button variant="contained" onClick={handleSubmit}>🏃‍♂️🏃‍♀️</Button>
         </div>
     )
 

@@ -24,13 +24,13 @@ function UserProfile({ users }) {
 
     const charList = characters.map((char) => {
         return (
-            <CharCard key={char.id} char={char} />
+            <CharCard key={char.id} char={char} owner={users[index - 1].username} />
         )
     })
 
     return (
         <div className="UserCard">
-            <h1>You've landed on the page for {users[index].username}</h1>
+            <h1>You've landed on the page for {users[index - 1].username}</h1>
             <NewChar />
             {charList}
         </div>
