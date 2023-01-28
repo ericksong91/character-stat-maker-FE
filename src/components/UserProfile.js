@@ -25,10 +25,17 @@ function UserProfile({ users, onSubmit }) {
         )
     })
 
+    function handleNewCharacter(data) {
+        console.log("Checking new Character....");
+        console.log(data);
+
+        setCharacters([...characters, data]);
+      }
+
     return (
         <div className="UserCard">
             <h1>You've landed on the page for {users[index - 1].username}</h1>
-            <NewChar id={users[index - 1].id} onSubmit={onSubmit} />
+            <NewChar id={users[index - 1].id} onSubmit={handleNewCharacter} />
             <Link to={`/`}><Button variant="contained">Return to Userlist</Button></Link>
             <Grid container spacing={2} columns={12}>
                 {charList}
