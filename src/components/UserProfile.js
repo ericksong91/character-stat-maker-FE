@@ -2,8 +2,14 @@ import { React, useEffect, useState } from 'react';
 import CharCard from './CharCard';
 // import Container from '@mui/material/Container';
 // import Grid2 from '@mui/material/Unstable_Grid2';
+import NewChar from './NewChar';
 import { Link, useParams } from "react-router-dom"
 import '../css/App.css';
+
+//App 
+//User List -> User Card
+//User Profile -> Char Card / New Character?
+// 
 
 function UserProfile({ users }) {
     const index = parseInt(useParams().id);
@@ -25,6 +31,7 @@ function UserProfile({ users }) {
     return (
         <div className="UserCard">
             <h1>You've landed on the page for {users[index].username}</h1>
+            <NewChar />
             {charList}
         </div>
     );
