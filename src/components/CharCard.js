@@ -32,13 +32,13 @@ function CharCard({ char, onDelete, onEdit }) {
     }
 
     function editCharacter() {
-        console.log("Editing...")
+        setIsEdit(!isEdit)
     }
 
     return (
         <div className="UserCard">
             {isEdit ? (
-                null
+                <EditChar onEdit={editCharacter} onDelete={deleteCharacter} char={char}/>
             ) : (
                 <Card variant="outlined">
                     <h3>{name}</h3>
@@ -57,8 +57,6 @@ function CharCard({ char, onDelete, onEdit }) {
                     <Button variant="contained" onClick={editCharacter}>Edit</Button>
                 </Card>)
             }
-
-
         </div>
     );
 }
