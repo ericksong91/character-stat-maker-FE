@@ -36,14 +36,14 @@ function CharCard({ char, owner, onDelete }) {
             <Card variant="outlined">
                 <h3>{name}</h3>
                 <h3>{job}</h3>
-                HP: {hp}
-                STR: {str}
-                MAG: {mag}
-                DEX: {dex}
-                SPD: {spd}
-                DEF: {def}
-                RES: {res}
-                LUK: {luk}
+                <li>HP: {hp}</li>
+                <li>STR: {str}</li>
+                <li>MAG: {mag}</li>
+                <li>DEX: {dex}</li>
+                <li>SPD: {spd}</li>
+                <li>DEF: {def}</li>
+                <li>RES: {res}</li>
+                <li>LUK: {luk}</li>
 
                 <h4>Owned by {owner}</h4>
                 <Button variant="contained" onClick={deleteCharacter}>Delete Character</Button>
