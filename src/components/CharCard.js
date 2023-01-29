@@ -1,15 +1,16 @@
 import { React } from 'react';
 import '../css/App.css';
 import Card from '@mui/material/Card';
+import Button from '@mui/material/Button'
 
-function CharCard({ char, owner }) {
+function CharCard({ char, owner, onDelete }) {
 
     const {
         id,
         name,
         job,
-        char_sprite,
-        user_id,
+        // char_sprite,
+        // user_id,
         hp,
         str,
         mag,
@@ -19,6 +20,16 @@ function CharCard({ char, owner }) {
         res,
         luk
     } = char
+
+    function deleteCharacter() {
+
+        fetch(`http://localhost:9292/users/characters/${id}`, {
+            method: "DELETE",
+        })
+            .then((r) => r.json())
+            .then((data) => onDelete(data))
+
+    }
 
     return (
         <div className="UserCard">
@@ -35,6 +46,8 @@ function CharCard({ char, owner }) {
                 LUK: {luk}
 
                 <h4>Owned by {owner}</h4>
+                <Button variant="contained" onClick={deleteCharacter}>Delete Character</Button>
+
             </Card>
         </div>
     );

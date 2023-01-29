@@ -6,7 +6,7 @@ import { Grid } from '@mui/material';
 import { Link, useParams } from "react-router-dom"
 import '../css/App.css';
 
-function UserProfile({ users, onSubmit }) {
+function UserProfile({ users }) {
     const index = parseInt(useParams().id);
     const [characters, setCharacters] = useState([]);
 
@@ -20,17 +20,22 @@ function UserProfile({ users, onSubmit }) {
     const charList = characters.map((char) => {
         return (
             <Grid item xs={3} key={char.id}>
-                <CharCard key={char.id} char={char} owner={users[index - 1].username} />
+                <CharCard key={char.id} char={char} owner={users[index - 1].username} onDelete={handleDeleteCharacter} />
             </Grid>
         )
     })
 
     function handleNewCharacter(data) {
-        console.log("Checking new Character....");
-        console.log(data);
-
         setCharacters([...characters, data]);
-      }
+    }
+
+    function handleDeleteCharacter(data) {
+        const updatedChar = characters.filter((char) => {
+            return char.id !== data.id
+        });
+
+        setCharacters(updatedChar);
+    }
 
     return (
         <div className="UserCard">
