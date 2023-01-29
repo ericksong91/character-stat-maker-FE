@@ -20,7 +20,7 @@ function UserProfile({ users }) {
     const charList = characters.map((char) => {
         return (
             <Grid item xs={3} key={char.id}>
-                <CharCard key={char.id} char={char} owner={users[index - 1].username} onDelete={handleDeleteCharacter} />
+                <CharCard key={char.id} char={char} onDelete={handleDeleteCharacter} />
             </Grid>
         )
     })
@@ -39,7 +39,7 @@ function UserProfile({ users }) {
 
     return (
         <div className="UserCard">
-            <h1>You've landed on the page for {users[index - 1].username}</h1>
+            <h1>{users[index - 1].username}'s Units!</h1>
             <NewChar id={users[index - 1].id} onSubmit={handleNewCharacter} />
             <Link to={`/`}><Button variant="contained">Return to Userlist</Button></Link>
             <Grid container spacing={2} columns={12}>

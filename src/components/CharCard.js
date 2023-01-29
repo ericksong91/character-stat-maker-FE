@@ -1,9 +1,11 @@
-import { React } from 'react';
+import { React, useState } from 'react';
+import EditChar from './EditCharacter';
 import '../css/App.css';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button'
 
-function CharCard({ char, owner, onDelete, onEdit }) {
+function CharCard({ char, onDelete, onEdit }) {
+    const [isEdit, setIsEdit] = useState(false);
 
     const {
         id,
@@ -29,29 +31,34 @@ function CharCard({ char, owner, onDelete, onEdit }) {
             .then((data) => onDelete(data));
     }
 
-    function editCharacter(){
+    function editCharacter() {
         console.log("Editing...")
     }
 
     return (
         <div className="UserCard">
-            <Card variant="outlined">
-                <h3>{name}</h3>
-                <h3>{job}</h3>
-                <li>HP: {hp}</li>
-                <li>STR: {str}</li>
-                <li>MAG: {mag}</li>
-                <li>DEX: {dex}</li>
-                <li>SPD: {spd}</li>
-                <li>DEF: {def}</li>
-                <li>RES: {res}</li>
-                <li>LUK: {luk}</li>
+            {isEdit ? (
+                null
+            ) : (
+                <Card variant="outlined">
+                    <h3>{name}</h3>
+                    <h3>{job}</h3>
+                    <li>HP: {hp}</li>
+                    <li>STR: {str}</li>
+                    <li>MAG: {mag}</li>
+                    <li>DEX: {dex}</li>
+                    <li>SPD: {spd}</li>
+                    <li>DEF: {def}</li>
+                    <li>RES: {res}</li>
+                    <li>LUK: {luk}</li>
 
-                <h4>Owned by {owner}</h4>
-                <Button variant="contained" onClick={deleteCharacter}>Delete Character</Button>
-                <Button variant="contained" onClick={editCharacter}>Edit</Button>
+                    <Button variant="contained" onClick={deleteCharacter}>Delete Character</Button>
 
-            </Card>
+                    <Button variant="contained" onClick={editCharacter}>Edit</Button>
+                </Card>)
+            }
+
+
         </div>
     );
 }

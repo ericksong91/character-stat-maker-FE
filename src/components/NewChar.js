@@ -27,7 +27,7 @@ function NewChar({ id, onSubmit }) {
 
     return (
         <div className="newChar">
-            <Button variant="contained" onClick={handleSubmit}>🏃‍♂️Create New Unit🏃‍♀️</Button>
+            <Button variant="contained" onClick={handleSubmit}>🏃‍♂️Hire New Unit🏃‍♀️</Button>
         </div>
     )
 
