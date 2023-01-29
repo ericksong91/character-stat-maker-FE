@@ -3,7 +3,7 @@ import '../css/App.css';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button'
 
-function CharCard({ char, owner, onDelete }) {
+function CharCard({ char, owner, onDelete, onEdit }) {
 
     const {
         id,
@@ -22,13 +22,15 @@ function CharCard({ char, owner, onDelete }) {
     } = char
 
     function deleteCharacter() {
-
         fetch(`http://localhost:9292/users/characters/${id}`, {
             method: "DELETE",
         })
             .then((r) => r.json())
-            .then((data) => onDelete(data))
+            .then((data) => onDelete(data));
+    }
 
+    function editCharacter(){
+        console.log("Editing...")
     }
 
     return (
@@ -47,6 +49,7 @@ function CharCard({ char, owner, onDelete }) {
 
                 <h4>Owned by {owner}</h4>
                 <Button variant="contained" onClick={deleteCharacter}>Delete Character</Button>
+                <Button variant="contained" onClick={editCharacter}>Edit</Button>
 
             </Card>
         </div>
