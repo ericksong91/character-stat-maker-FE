@@ -1,5 +1,5 @@
 import { React, useState } from 'react';
-import EditChar from './EditCharacter';
+import EditCharacter from './EditCharacter';
 import '../css/App.css';
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button'
@@ -31,14 +31,14 @@ function CharCard({ char, onDelete, onEdit }) {
             .then((data) => onDelete(data));
     }
 
-    function editCharacter() {
+    function editCharacterToggle() {
         setIsEdit(!isEdit)
     }
 
     return (
         <div className="UserCard">
             {isEdit ? (
-                <EditChar onEdit={editCharacter} onDelete={deleteCharacter} char={char}/>
+                <EditCharacter onEditToggle={editCharacterToggle} onEdit={onEdit} onDelete={deleteCharacter} char={char} />
             ) : (
                 <Card variant="outlined">
                     <h3>{name}</h3>
@@ -54,7 +54,7 @@ function CharCard({ char, onDelete, onEdit }) {
 
                     <Button variant="contained" onClick={deleteCharacter}>Delete Character</Button>
 
-                    <Button variant="contained" onClick={editCharacter}>Edit</Button>
+                    <Button variant="contained" onClick={editCharacterToggle}>Edit</Button>
                 </Card>)
             }
         </div>

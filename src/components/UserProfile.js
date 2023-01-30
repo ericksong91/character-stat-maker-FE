@@ -20,7 +20,7 @@ function UserProfile({ users }) {
     const charList = characters.map((char) => {
         return (
             <Grid item xs={3} key={char.id}>
-                <CharCard key={char.id} char={char} onDelete={handleDeleteCharacter} />
+                <CharCard key={char.id} char={char} onDelete={handleDeleteCharacter} onEdit={handleEditCharacter} />
             </Grid>
         )
     })
@@ -35,6 +35,34 @@ function UserProfile({ users }) {
         });
 
         setCharacters(updatedChar);
+    }
+
+    function handleEditCharacter(newJob, newName, id) {
+        console.log(newJob);
+        console.log(newName);
+
+        fetch(`http://localhost:9292/users/characters/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                "name": newName,
+                "job": newJob
+            }),
+        })
+            .then((r) => r.json())
+            .then((data) => {
+                const updatedChar = characters.map((char)=>{
+                    if(char.id === data.id) {
+                        return data;
+                    } else {
+                        return char
+                    }
+                })
+
+                setCharacters(updatedChar);
+            })
     }
 
     return (

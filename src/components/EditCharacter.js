@@ -7,11 +7,11 @@ import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField'
 
 
-function EditChar({ onDelete, onEdit, char }) {
+function EditChar({ onDelete, onEditToggle, onEdit, char }) {
     const {
         id,
-        name,
-        job,
+        // name,
+        // job,
         // char_sprite,
         // user_id,
         hp,
@@ -54,30 +54,41 @@ function EditChar({ onDelete, onEdit, char }) {
         "Dancer"
     ]
 
-    const jobSelect = jobsNames.map((jobName)=>{
-        return <MenuItem value={jobName}>{jobName}</MenuItem>
+    const jobSelect = jobsNames.map((jobName) => {
+        return <MenuItem key={`${jobName} ${id}`} value={jobName}>{jobName}</MenuItem>
     })
 
-    const [onName, setOnName] = useState(name);
-    const [onJob, setOnJob] = useState(job);
+    const [onName, setOnName] = useState(char.name);
+    const [onJob, setOnJob] = useState(char.job);
 
-    function handleChange(e) {
+    function handleNameChange(e) {
         e.preventDefault();
+        setOnName(e.target.value);
+    }
+
+    function handleDropDown(e) {
+        e.preventDefault();
+        setOnJob(e.target.value);
     }
 
     return (
         <div className="EditChar">
             <Card variant="outlined">
                 <FormControl>
-                    <TextField 
-                    id="outlined-basic" 
-                    value={onName} 
-                    onChange={handleChange}
+                    <TextField
+                        id="outlined-basic"
+                        value={onName}
+                        onChange={handleNameChange}
                     />
-                    <Select id="demo-simple-select" value={onJob}>
+                    <Select
+                        id="demo-simple-select"
+                        value={onJob}
+                        onChange={handleDropDown}
+                    >
                         {jobSelect}
                     </Select>
                 </FormControl>
+
                 <li>HP: {hp}</li>
                 <li>STR: {str}</li>
                 <li>MAG: {mag}</li>
@@ -89,7 +100,10 @@ function EditChar({ onDelete, onEdit, char }) {
 
                 <Button variant="contained" onClick={onDelete}>Delete Character</Button>
 
-                <Button variant="contained" onClick={onEdit}>Save</Button>
+                <Button variant="contained" onClick={() => {
+                    onEditToggle();
+                    onEdit(onJob, onName, id);
+                    }}>Save</Button>
             </Card>
         </div>
     );
