@@ -1,6 +1,7 @@
 import { React } from 'react';
 import UserCard from './UserCard';
 import { Grid } from '@mui/material';
+import { Button } from '@mui/material';
 import '../css/App.css';
 
 function UserList({ users }) {
@@ -14,7 +15,8 @@ function UserList({ users }) {
 
     return (
         <div className="UserList">
-            <h1>Hello, here is a list of Users:</h1>
+            <h1>Character Unit Generator</h1>
+            <Button variant="contained" sx={{m: 2}}>Create New User</Button>
             <Grid container spacing={2} columns={12}>
                 {userList}
             </Grid>

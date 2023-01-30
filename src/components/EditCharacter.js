@@ -74,9 +74,10 @@ function EditChar({ onDelete, onEditToggle, onEdit, char }) {
     return (
         <div className="EditChar">
             <Card variant="outlined">
-                <FormControl>
+                <FormControl sx={{m: 1}}>
                     <TextField
                         id="outlined-basic"
+                        sx={{textAlign: "center"}}
                         value={onName}
                         onChange={handleNameChange}
                     />
@@ -98,9 +99,9 @@ function EditChar({ onDelete, onEditToggle, onEdit, char }) {
                 <li>RES: {res}</li>
                 <li>LUK: {luk}</li>
 
-                <Button variant="contained" onClick={onDelete}>Delete Character</Button>
+                <Button variant="contained" sx={{m: 0.5, mt: 0.5}} onClick={onDelete}>Delete Character</Button>
 
-                <Button variant="contained" onClick={() => {
+                <Button variant="contained" sx={{m: 0.5, mt: 0.5}} onClick={() => {
                     onEditToggle();
                     onEdit(onJob, onName, id);
                     }}>Save</Button>
