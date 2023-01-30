@@ -1,6 +1,10 @@
 import { React, useState } from 'react';
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
+import { FormControl } from '@mui/material';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import TextField from '@mui/material/TextField'
 
 
 function EditChar({ onDelete, onEdit, char }) {
@@ -20,14 +24,60 @@ function EditChar({ onDelete, onEdit, char }) {
         luk
     } = char
 
+    const jobsNames = [
+        "Sword Fighter",
+        "Lance Fighter",
+        "Axe Fighter",
+        "Archer",
+        "Bow Knight",
+        "Armor Knight",
+        "Cavalier",
+        "Mage",
+        "Martial Monk",
+        "Pegasus Knight",
+        "Swordmaster",
+        "Hero",
+        "Halberdier",
+        "Royal Knight",
+        "Berserker",
+        "Warrior",
+        "Sniper",
+        "General",
+        "Paladin",
+        "Wolf Knight",
+        "Sage",
+        "Mage Knight",
+        "Martial Master",
+        "Griffin Knight",
+        "Wyvern Knight",
+        "Thief",
+        "Dancer"
+    ]
+
+    const jobSelect = jobsNames.map((jobName)=>{
+        return <MenuItem value={jobName}>{jobName}</MenuItem>
+    })
+
     const [onName, setOnName] = useState(name);
     const [onJob, setOnJob] = useState(job);
+
+    function handleChange(e) {
+        e.preventDefault();
+    }
 
     return (
         <div className="EditChar">
             <Card variant="outlined">
-                <h3>{name}</h3>
-                <h3>{job}</h3>
+                <FormControl>
+                    <TextField 
+                    id="outlined-basic" 
+                    value={onName} 
+                    onChange={handleChange}
+                    />
+                    <Select id="demo-simple-select" value={onJob}>
+                        {jobSelect}
+                    </Select>
+                </FormControl>
                 <li>HP: {hp}</li>
                 <li>STR: {str}</li>
                 <li>MAG: {mag}</li>
@@ -39,7 +89,7 @@ function EditChar({ onDelete, onEdit, char }) {
 
                 <Button variant="contained" onClick={onDelete}>Delete Character</Button>
 
-                <Button variant="contained" onClick={onEdit}>Exit</Button>
+                <Button variant="contained" onClick={onEdit}>Save</Button>
             </Card>
         </div>
     );

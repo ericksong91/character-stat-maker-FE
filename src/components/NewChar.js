@@ -20,6 +20,7 @@ function NewChar({ id, onSubmit }) {
             .then((data) => {
                 console.log(data)
                 onSubmit(data)
+                alert("Generating Character!")
             })
             .catch(() => alert("Error making character!"))
     }
