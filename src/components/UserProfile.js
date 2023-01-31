@@ -38,9 +38,6 @@ function UserProfile({ users }) {
     }
 
     function handleEditCharacter(newJob, newName, id) {
-        console.log(newJob);
-        console.log(newName);
-
         fetch(`http://localhost:9292/users/characters/${id}`, {
             method: "PATCH",
             headers: {

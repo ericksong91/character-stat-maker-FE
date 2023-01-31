@@ -11,6 +11,7 @@ function CharCard({ char, onDelete, onEdit }) {
         id,
         name,
         job,
+        level,
         // char_sprite,
         // user_id,
         hp,
@@ -42,6 +43,7 @@ function CharCard({ char, onDelete, onEdit }) {
             ) : (
                 <Card variant="outlined">
                     <h3>{name}</h3>
+                    <h3>LEVEL: {level}</h3>
                     <h3>{job}</h3>
                     <li>HP: {hp}</li>
                     <li>STR: {str}</li>

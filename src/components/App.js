@@ -17,10 +17,28 @@ function App() {
       .catch(() => alert("Error!"))
   }, [])
 
+  function handleNewUser(username) {
+    if(username === '') {
+      return
+    } else {
+      fetch('http://localhost:9292/users/new', {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          "username": username,
+        })
+      })
+        .then((r) => r.json())
+        .then((data) => setUsers([...users, data]))
+    }
+  }
+
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<UserList users={users} />} />
+        <Route path='/' element={<UserList users={users} onNewUser={handleNewUser} />} />
         <Route path='/users/:id' element={<UserProfile users={users} />} />
       </Routes>
     </div>

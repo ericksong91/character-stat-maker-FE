@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField'
 function EditChar({ onDelete, onEditToggle, onEdit, char }) {
     const {
         id,
+        level,
         // name,
         // job,
         // char_sprite,
@@ -81,6 +82,7 @@ function EditChar({ onDelete, onEditToggle, onEdit, char }) {
                         value={onName}
                         onChange={handleNameChange}
                     />
+                    <h3>LEVEL: {level}</h3>
                     <Select
                         id="demo-simple-select"
                         value={onJob}
@@ -89,7 +91,6 @@ function EditChar({ onDelete, onEditToggle, onEdit, char }) {
                         {jobSelect}
                     </Select>
                 </FormControl>
-
                 <li>HP: {hp}</li>
                 <li>STR: {str}</li>
                 <li>MAG: {mag}</li>
