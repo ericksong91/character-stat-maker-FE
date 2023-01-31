@@ -10,8 +10,6 @@ function UserProfile({users}) {
     const index = parseInt(useParams().id);
     const [characters, setCharacters] = useState([]);
 
-    console.log(users)
-
     useEffect(() => {
         fetch(`http://localhost:9292/users/${index}`)
             .then((r) => r.json())
