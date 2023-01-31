@@ -35,13 +35,17 @@ function App() {
     }
   }
 
-  function handleDeleteUser() {
-    console.log("Deleting user")
+  function handleDeleteUser(id) {
+
+    console.log("Deleting", id)
+    fetch(`http://localhost:9292/users/${id}`, {
+      method: "DELETE"
+    })
+      .then((r) => r.json())
+      .then((data) => console.log(data))
   }
 
   function handleEditUser(name, id) {
-    console.log("Editing User", name, id);
-
     fetch(`http://localhost:9292/users/${id}`, {
       method: "PATCH",
       headers: {

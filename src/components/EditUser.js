@@ -11,7 +11,6 @@ function EditUser({ name, id, onToggle, onEditUser, onDeleteUser }) {
 
     function handleNameChange(e) {
         e.preventDefault();
-        console.log(e.target.value);
         setOnName(e.target.value);
     }
 
@@ -27,7 +26,7 @@ function EditUser({ name, id, onToggle, onEditUser, onDeleteUser }) {
                     />
                 </FormControl>
 
-                <Button variant="contained" sx={{ m: 0.5, mt: 0.5 }} onClick={onDeleteUser}>Delete User</Button>
+                <Button variant="contained" sx={{ m: 0.5, mt: 0.5 }} onClick={() => onDeleteUser(id)}>Delete User</Button>
 
                 <Button variant="contained" sx={{ m: 1, mt: 0.5 }} onClick={() => {
                     onToggle();
