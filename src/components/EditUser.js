@@ -5,29 +5,33 @@ import { FormControl } from '@mui/material';
 import TextField from '@mui/material/TextField'
 
 
-function EditUser() {
-    const [onName, setOnName] = useState('');
+function EditUser({ name, id, onToggle, onEditUser, onDeleteUser }) {
+    const [onName, setOnName] = useState(name);
 
     function handleNameChange(e) {
         e.preventDefault();
+        console.log(e.target.value);
         setOnName(e.target.value);
     }
 
     return (
         <div className="EditUser">
             <Card variant="outlined">
-                <FormControl sx={{m: 1}}>
+                <FormControl sx={{ m: 1 }}>
                     <TextField
                         id="outlined-basic"
-                        sx={{textAlign: "center"}}
+                        sx={{ textAlign: "center" }}
                         value={onName}
                         onChange={handleNameChange}
                     />
                 </FormControl>
 
-                <Button variant="contained" sx={{m: 0.5, mt: 0.5}}>Delete User</Button>
+                <Button variant="contained" sx={{ m: 0.5, mt: 0.5}} onClick={onDeleteUser}>Delete User</Button>
 
-                <Button variant="contained" sx={{m: 0.5, mt: 0.5}}>Save</Button>
+                <Button variant="contained" sx={{ m: 1, mt: 0.5 }} onClick={()=>{
+                    onToggle();
+                    onEditUser(onName, id);
+                }}>Save</Button>
             </Card>
         </div>
     );

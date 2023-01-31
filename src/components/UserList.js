@@ -5,13 +5,17 @@ import { Grid } from '@mui/material';
 import { Button } from '@mui/material';
 import '../css/App.css';
 
-function UserList({ users, onNewUser }) {
+function UserList({ users, onNewUser, onEditUser, onDeleteUser }) {
     const [showNew, setShowNew] = useState(false);
 
     const userList = users.map((name) => {
         return (
             <Grid item xs={3} key={name.id}>
-                <UserCard key={name.id} name={name.username} id={name.id} />
+                <UserCard key={name.id}
+                    name={name.username}
+                    id={name.id}
+                    onEditUser={onEditUser}
+                    onDeleteUser={onDeleteUser} />
             </Grid>
         )
     })
@@ -25,7 +29,7 @@ function UserList({ users, onNewUser }) {
             <h1>Character Unit Generator</h1>
 
             {showNew ? (
-                <NewUser onToggle={toggleNewUser} onNewUser={onNewUser}/>
+                <NewUser onToggle={toggleNewUser} onNewUser={onNewUser} />
             ) : (
                 <Button
                     variant="contained"

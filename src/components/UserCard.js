@@ -7,7 +7,7 @@ import {
     Link
 } from "react-router-dom"
 
-function UserCard({ name, id }) {
+function UserCard({ name, id, onEditUser, onDeleteUser }) {
     const [editUserToggle, setEditUserToggle] = useState(false);
 
     function handleEditUserToggle() {
@@ -17,12 +17,17 @@ function UserCard({ name, id }) {
     return (
         <div className="UserCard">
             {editUserToggle ? (
-                <EditUser name={name} onToggle={handleEditUserToggle} />
+                <EditUser name={name} id={id}
+                    onToggle={handleEditUserToggle}
+                    onEditUser={onEditUser}
+                    onDeleteUser={onDeleteUser} />
             ) : (
                 <Card variant="outlined">
                     <h3>{name}</h3>
-                    <Link to={`/users/${id}`}><Button variant="contained">Character List</Button></Link>
-                    <Button variant="contained" sx={{ m: 1 }} onClick={handleEditUserToggle}>Edit User</Button>
+                    <Link to={`/users/${id}`}>
+                        <Button variant="contained" sx={{ m: 0.5, mt: 0.5 }}>Character List</Button>
+                    </Link>
+                    <Button variant="contained" sx={{ m: 1, mt: 0.5 }} onClick={handleEditUserToggle}>Edit User</Button>
                 </Card >
             )
             }

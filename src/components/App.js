@@ -18,7 +18,7 @@ function App() {
   }, [])
 
   function handleNewUser(username) {
-    if(username === '') {
+    if (username === '') {
       return
     } else {
       fetch('http://localhost:9292/users/new', {
@@ -35,10 +35,23 @@ function App() {
     }
   }
 
+  function handleDeleteUser() {
+    console.log("Deleting user")
+  }
+
+  function handleEditUser(name, id) {
+    console.log("Editing User", name, id)
+  }
+
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<UserList users={users} onNewUser={handleNewUser} />} />
+        <Route path='/' element={
+          <UserList users={users}
+            onNewUser={handleNewUser}
+            onEditUser={handleEditUser}
+            onDeleteUser={handleDeleteUser} />
+        } />
         <Route path='/users/:id' element={<UserProfile users={users} />} />
       </Routes>
     </div>
