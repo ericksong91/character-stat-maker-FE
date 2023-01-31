@@ -6,14 +6,18 @@ import { Grid } from '@mui/material';
 import { Link, useParams } from "react-router-dom"
 import '../css/App.css';
 
-function UserProfile({ users }) {
+function UserProfile({users}) {
     const index = parseInt(useParams().id);
     const [characters, setCharacters] = useState([]);
+
+    console.log(users)
 
     useEffect(() => {
         fetch(`http://localhost:9292/users/${index}`)
             .then((r) => r.json())
-            .then((data) => setCharacters(data))
+            .then((data) => {
+                setCharacters(data);
+            })
             .catch(() => alert("Error!"))
     }, [index])
 
@@ -50,8 +54,8 @@ function UserProfile({ users }) {
         })
             .then((r) => r.json())
             .then((data) => {
-                const updatedChar = characters.map((char)=>{
-                    if(char.id === data.id) {
+                const updatedChar = characters.map((char) => {
+                    if (char.id === data.id) {
                         return data;
                     } else {
                         return char
@@ -62,12 +66,16 @@ function UserProfile({ users }) {
             })
     }
 
+    const username = users.find((user) => {
+        return user.id === index;
+    })
+
     return (
         <div className="UserCard">
-            <h1>{users[index - 1].username}'s Units!</h1>
-            <NewChar id={users[index - 1].id} onSubmit={handleNewCharacter} />
+            {username === undefined ? null : <h1>{username.username}'s Units!</h1> }
+            <NewChar id={index} onSubmit={handleNewCharacter} />
             <Link to={`/`}><Button variant="contained">Return to Userlist</Button></Link>
-            <Grid container spacing={2} columns={12}>
+            <Grid container padding={3} spacing={2} columns={12}>
                 {charList}
             </Grid>
         </div>

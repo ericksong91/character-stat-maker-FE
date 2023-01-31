@@ -38,7 +38,7 @@ function UserList({ users, onNewUser, onEditUser, onDeleteUser }) {
                     Create New User
                 </Button>
             )}
-            <Grid container spacing={2} columns={12}>
+            <Grid container padding={3} spacing={2} columns={12}>
                 {userList}
             </Grid>
         </div>

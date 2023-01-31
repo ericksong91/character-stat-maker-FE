@@ -1,5 +1,10 @@
 .App {
+  background-color: #629baa;
   text-align: center;
+  color:rgb(48, 45, 44);
+  position:relative;
+  border-radius: 20px;
+  margin:1rem;
 }
 
 .App-logo {
@@ -33,6 +38,15 @@ a:link, a:visited {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+}
+
+.banner {
+  background-color: #629baa;
+  text-align: center;
+  color:rgb(48, 45, 44);
+  position:relative;
+  border-radius: 20px;
+  margin:1rem;
 }
 
 
