@@ -38,7 +38,9 @@ This particular repository hosts the frontend of the application. You can use th
 
 ## Planned Features
 
-1. Money system to hire units
+1. Money system to hire characters
+
+2. Add photos to characters
 
 ## Credits  
 
