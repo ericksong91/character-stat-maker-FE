@@ -40,7 +40,30 @@ function App() {
   }
 
   function handleEditUser(name, id) {
-    console.log("Editing User", name, id)
+    console.log("Editing User", name, id);
+
+    fetch(`http://localhost:9292/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        "id": id,
+        "username": name
+      }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        const updatedUsers = users.map((user) => {
+          if (user.id === data.id) {
+            return data;
+          } else {
+            return user
+          }
+        })
+
+        setUsers(updatedUsers);
+      })
   }
 
   return (

@@ -2,7 +2,8 @@ import { React, useState } from 'react';
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card'
 import { FormControl } from '@mui/material';
-import TextField from '@mui/material/TextField'
+import TextField from '@mui/material/TextField';
+import '../css/App.css';
 
 
 function EditUser({ name, id, onToggle, onEditUser, onDeleteUser }) {
@@ -26,9 +27,9 @@ function EditUser({ name, id, onToggle, onEditUser, onDeleteUser }) {
                     />
                 </FormControl>
 
-                <Button variant="contained" sx={{ m: 0.5, mt: 0.5}} onClick={onDeleteUser}>Delete User</Button>
+                <Button variant="contained" sx={{ m: 0.5, mt: 0.5 }} onClick={onDeleteUser}>Delete User</Button>
 
-                <Button variant="contained" sx={{ m: 1, mt: 0.5 }} onClick={()=>{
+                <Button variant="contained" sx={{ m: 1, mt: 0.5 }} onClick={() => {
                     onToggle();
                     onEditUser(onName, id);
                 }}>Save</Button>

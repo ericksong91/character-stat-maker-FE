@@ -28,7 +28,7 @@ function UserCard({ name, id, onEditUser, onDeleteUser }) {
                         <Button variant="contained" sx={{ m: 0.5, mt: 0.5 }}>Character List</Button>
                     </Link>
                     <Button variant="contained" sx={{ m: 1, mt: 0.5 }} onClick={handleEditUserToggle}>Edit User</Button>
-                </Card >
+                </Card>
             )
             }
         </div >
