@@ -42,7 +42,13 @@ function App() {
       method: "DELETE"
     })
       .then((r) => r.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        const updatedUsers = users.filter((user) => {
+          return user.id !== data.id
+        });
+
+        setUsers(updatedUsers);
+      })
   }
 
   function handleEditUser(name, id) {
