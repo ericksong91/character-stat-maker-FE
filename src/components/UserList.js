@@ -1,10 +1,13 @@
-import { React } from 'react';
+import { React, useState } from 'react';
 import UserCard from './UserCard';
+import NewUser from './NewUser';
 import { Grid } from '@mui/material';
 import { Button } from '@mui/material';
 import '../css/App.css';
 
 function UserList({ users }) {
+    const [showNew, setShowNew] = useState(false);
+
     const userList = users.map((name) => {
         return (
             <Grid item xs={3} key={name.id}>
@@ -13,10 +16,15 @@ function UserList({ users }) {
         )
     })
 
+    function toggleNewUser() {
+        setShowNew(!showNew);
+    }
+
     return (
         <div className="UserList">
             <h1>Character Unit Generator</h1>
-            <Button variant="contained" sx={{m: 2}}>Create New User</Button>
+
+            {showNew ? (<NewUser />) : (<Button variant="contained" sx={{m: 2}} onClick={toggleNewUser}>Create New User</Button>)}
             <Grid container spacing={2} columns={12}>
                 {userList}
             </Grid>

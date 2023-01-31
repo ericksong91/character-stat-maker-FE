@@ -7,11 +7,20 @@ import '../css/App.css';
 function NewUser() {
     const [username, setUsername] = useState('');
 
+    function handleUsername(e) {
+        e.preventDefault();
 
+        console.log(e.target.value);
+        setUsername(e.target.value);
+    }
 
     return (
         <div className="newUser">
-            <Button variant="contained" onClick={handleSubmit}>Save User</Button>
+            <FormControl>
+                <TextField value={username} />
+                <Button variant="contained">Save User</Button>
+            </FormControl>
+
         </div>
     )
 

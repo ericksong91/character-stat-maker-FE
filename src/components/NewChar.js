@@ -4,8 +4,7 @@ import '../css/App.css';
 
 function NewChar({ id, onSubmit }) {
     function handleSubmit() {
-        console.log("you submitted!")
-        console.log(id)
+        // alert("Generating Character!")
 
         fetch("http://localhost:9292/users/characters/new", {
             method: "POST",
@@ -20,11 +19,9 @@ function NewChar({ id, onSubmit }) {
             .then((data) => {
                 console.log(data)
                 onSubmit(data)
-                alert("Generating Character!")
             })
             .catch(() => alert("Error making character!"))
     }
-
 
     return (
         <div className="newChar">
