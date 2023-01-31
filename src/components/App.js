@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from 'react';
 import UserList from './UserList';
 import UserProfile from './UserProfile';
+import Homepage from './Homepage';
 import '../css/App.css';
 import {
   Routes,
@@ -79,7 +80,8 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={
+        <Route path="/" element={<Homepage />} />
+        <Route path='/users' element={
           <UserList users={users}
             onNewUser={handleNewUser}
             onEditUser={handleEditUser}
