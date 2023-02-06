@@ -1,4 +1,4 @@
-# Character Stat Maker
+# Character Stat Maker (Frontend)
 
 ## Description
 

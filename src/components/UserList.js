@@ -8,12 +8,12 @@ import '../css/App.css';
 function UserList({ users, onNewUser, onEditUser, onDeleteUser }) {
     const [showNew, setShowNew] = useState(false);
 
-    const userList = users.map((name) => {
+    const userList = users.map((user) => {
         return (
-            <Grid item xs={3} key={name.id}>
-                <UserCard key={name.id}
-                    name={name.username}
-                    id={name.id}
+            <Grid item xs={3} key={user.id}>
+                <UserCard key={user.id}
+                    name={user.username}
+                    id={user.id}
                     onEditUser={onEditUser}
                     onDeleteUser={onDeleteUser} />
             </Grid>
