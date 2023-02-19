@@ -25,21 +25,30 @@ function UserProfile({ users, onUserCache }) {
     })
 
     function handleNewCharacter(data) {
-        const newChars = [...characters, data]
+        const newChars = [...characters, data];
         const updatedUserObj = {
             id: userObj.id,
             created_at: userObj.created_at,
             username: userObj.username,
             characters: newChars 
-        }
+        };
 
         setCharacters(newChars);
-        onUserCache(updatedUserObj)
+        onUserCache(updatedUserObj);
     }
 
     function handleDeleteCharacter(data) {
         const updatedChar = characters.filter((char) => char.id !== data.id);
+        const updatedUserObj = {
+            id: userObj.id,
+            created_at: userObj.created_at,
+            username: userObj.username,
+            characters: updatedChar
+        }
+
         setCharacters(updatedChar);
+        onUserCache(updatedUserObj)
+
     }
 
     function handleEditCharacter(newJob, newName, id) {
