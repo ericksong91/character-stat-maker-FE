@@ -36,8 +36,6 @@ function App() {
   }
 
   function handleDeleteUser(id) {
-
-    console.log("Deleting", id)
     fetch(`http://localhost:9292/users/${id}`, {
       method: "DELETE"
     })
@@ -76,6 +74,18 @@ function App() {
       })
   }
 
+  function handleUserCache(updatedUser) {
+    const updatedUsers = users.map((user) => {
+      if (user.id === updatedUser.id) {
+        return updatedUser
+      } else {
+        return user
+      }
+    })
+
+    setUsers(updatedUsers)
+  }
+
   return (
     <div className="App">
       <Routes>
@@ -85,7 +95,7 @@ function App() {
             onEditUser={handleEditUser}
             onDeleteUser={handleDeleteUser} />
         } />
-        <Route path='/users/:id' element={<UserProfile users={users} />} />
+        <Route path='/users/:id' element={<UserProfile users={users} onUserCache={handleUserCache} />} />
       </Routes>
     </div>
   );

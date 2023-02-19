@@ -6,8 +6,9 @@ import { Grid } from '@mui/material';
 import { Link, useParams } from "react-router-dom"
 import '../css/App.css';
 
-function UserProfile({ users }) {
+function UserProfile({ users, onUserCache }) {
     const index = parseInt(useParams().id);
+    const userObj = users.find((user) => user.id === index)
     const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
@@ -24,7 +25,16 @@ function UserProfile({ users }) {
     })
 
     function handleNewCharacter(data) {
-        setCharacters([...characters, data]);
+        const newChars = [...characters, data]
+        const updatedUserObj = {
+            id: userObj.id,
+            created_at: userObj.created_at,
+            username: userObj.username,
+            characters: newChars 
+        }
+
+        setCharacters(newChars);
+        onUserCache(updatedUserObj)
     }
 
     function handleDeleteCharacter(data) {
