@@ -4,7 +4,6 @@ import '../css/App.css';
 
 function NewChar({ id, onSubmit }) {
     function handleSubmit() {
-        // alert("Generating Character!")
 
         fetch("http://localhost:9292/users/characters/new", {
             method: "POST",

@@ -16,7 +16,7 @@ function NewUser({ onToggle, onNewUser }) {
         <div className="newUser">
             <FormControl>
                 <TextField className="newUserForm" value={username} onChange={handleUsernameChange} />
-                <Button variant="contained" onClick={()=>{
+                <Button variant="contained" onClick={() => {
                     onToggle();
                     onNewUser(username)
                 }}>Save User</Button>

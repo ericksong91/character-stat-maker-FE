@@ -54,9 +54,9 @@ function CharCard({ char, onDelete, onEdit }) {
                     <li>RES: {res}</li>
                     <li>LUK: {luk}</li>
 
-                    <Button variant="contained" sx={{m: 0.5, mt: 0.5}} onClick={deleteCharacter}>Delete Character</Button>
+                    <Button variant="contained" sx={{ m: 0.5, mt: 0.5 }} onClick={deleteCharacter}>Delete Character</Button>
 
-                    <Button variant="contained" sx={{m: 0.5, mt: 0.5}} onClick={editCharacterToggle}>Edit</Button>
+                    <Button variant="contained" sx={{ m: 0.5, mt: 0.5 }} onClick={editCharacterToggle}>Edit</Button>
                 </Card>)
             }
         </div>

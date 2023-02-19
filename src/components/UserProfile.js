@@ -7,7 +7,7 @@ import { Link, useParams } from "react-router-dom"
 import '../css/App.css';
 
 function UserProfile({ users, onUserCache }) {
-    const index = parseInt(useParams().id); 
+    const index = parseInt(useParams().id);
     const userObj = users.find((user) => user.id === index);
     const [characters, setCharacters] = useState([]);
 
@@ -30,7 +30,7 @@ function UserProfile({ users, onUserCache }) {
             id: userObj.id,
             created_at: userObj.created_at,
             username: userObj.username,
-            characters: newChars 
+            characters: newChars
         };
 
         setCharacters(newChars);
