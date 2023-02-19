@@ -9,7 +9,6 @@ function NewUser({ onToggle, onNewUser }) {
 
     function handleUsernameChange(e) {
         e.preventDefault();
-        console.log(e.target.value);
         setUsername(e.target.value);
     }
 

@@ -17,7 +17,6 @@ function NewChar({ id, onSubmit }) {
         })
             .then((r) => r.json())
             .then((data) => {
-                console.log(data)
                 onSubmit(data)
             })
             .catch(() => alert("Error making character!"))
