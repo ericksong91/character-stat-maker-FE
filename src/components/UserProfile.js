@@ -72,7 +72,15 @@ function UserProfile({ users, onUserCache }) {
                     }
                 })
 
+                const updatedUserObj = {
+                    id: userObj.id,
+                    created_at: userObj.created_at,
+                    username: userObj.username,
+                    characters: updatedChar
+                };
+
                 setCharacters(updatedChar);
+                onUserCache(updatedUserObj);
             })
     }
 
