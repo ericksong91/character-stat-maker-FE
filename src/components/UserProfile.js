@@ -7,8 +7,8 @@ import { Link, useParams } from "react-router-dom"
 import '../css/App.css';
 
 function UserProfile({ users, onUserCache }) {
-    const index = parseInt(useParams().id);
-    const userObj = users.find((user) => user.id === index)
+    const index = parseInt(useParams().id); 
+    const userObj = users.find((user) => user.id === index);
     const [characters, setCharacters] = useState([]);
 
     useEffect(() => {
