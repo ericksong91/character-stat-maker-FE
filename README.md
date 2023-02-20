@@ -32,6 +32,22 @@ This particular repository hosts the frontend of the application. You can use th
 
 9. Clicking on 'RETURN TO USERLIST' will return the user to the homepage
 
+## Examples:
+
+Creating a new user:
+
+![Creating a new user](./src/images/frontend_1.gif)
+
+Editing a user's name:
+
+![Editing a user's name](./src/images/frontend_2.gif)
+
+Modifying characters:
+
+![Modifying Characters](./src/images/frontend_3.gif)
+
+
+
 ## Project Status
 
 1/31/23 - Completed version 0.1
